@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- mi source de js -->
+	<script src="script.js"></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<!-- Linkeo la font roboto -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"> 
+	
+	<!-- Estilos del boton-->
+	<link rel="stylesheet" href="botones.css">
+
+	<!-- Estilos de la web-->
+	<link rel="stylesheet" href="estilos.css">
+</head>
+<title>Prestamista online</title>
+<body>
+	<!-- Seteo el contenedor para los 3 botones-->
+	<div class="contenedor">
+		<h1>Simulador de préstamo</h1>
+		<br>
+		<p id="monto">Selecciona en cuantas cuotas querés tu préstamo</p>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class="contenedor-botones">
+			<button onclick='tres_cuotas()' class="boton uno"><span>3 Cuotas</span></button>
+			<button onclick='seis_cuotas()' class="boton dos"><span>6 Cuotas</span></button>
+			<button onclick='nueve_cuotas()' class="boton tres"><span>9 Cuotas</span></button>
+				<div class="icono">
+					<div id="miDiv"></div> 
+			</div>
+		</div>
+	</div>
+</body>
+</html>

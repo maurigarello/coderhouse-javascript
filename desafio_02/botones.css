@@ -1,0 +1,67 @@
+.boton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 80px;
+	background: #141414;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+	border: none;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: .3s ease all;
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+}
+
+.boton.uno::after {
+	content: "";
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: calc(-100% - 80px);
+	border-bottom: 80px solid #b63434;
+	border-right: 80px solid transparent;
+	transition: .3s ease-in-out all;
+}
+
+.boton.uno:hover::after {
+	left: 0;
+}
+
+.boton.dos::after {
+	content: "";
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: calc(-100% - 80px);
+	border-bottom: 80px solid #1e5a0c;
+	border-right: 80px solid transparent;
+	transition: .3s ease-in-out all;
+}
+
+.boton.dos:hover::after {
+	left: 0;
+}
+
+.boton.tres::after {
+	content: "";
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: calc(-100% - 80px);
+	border-bottom: 80px solid #1660c0;
+	border-right: 80px solid transparent;
+	transition: .3s ease-in-out all;
+}
+
+.boton.tres:hover::after {
+	left: 0;
+}
