@@ -14,14 +14,12 @@ class Prestamo {
 
 
 // metodo para obtener datos sobre el prestamo
-    get_datos() {
-        
-            alert(`Info sobre el préstamo solicitado:
-                Monto: $` +this.monto + `
-                Cuotas: ` +this.cuotas + `
-                Total a pagar con interés: ` +this.total);
-    }
-
+get_datos() {
+    alert(`Info sobre el préstamo solicitado:
+            Monto: $` +this.monto + `
+            Cuotas: ` +this.cuotas + `
+            Total a pagar con interés: ` +this.total);
+        }
 }
 
 //declaro clase usuario 
@@ -34,24 +32,22 @@ class Prestamo {
 
 
 function prestamo(cuota) {
-    
-        if (cuota ===3) {
-            monto = parseInt(prompt("Ingrese el monto a calcular en pesos argentinos: "), 10);
-            if(Number.isNaN(monto)) return alert("Este simulador sólo admite números como parámetro");
-            return new_prestamo = new Prestamo(monto, cuota, 15);
-
-        } else if (cuota === 6) {
-            monto = parseInt(prompt("Ingrese el monto a calcular en pesos argentinos: "), 10);
-            if(Number.isNaN(monto)) return alert("Este simulador sólo admite números como parámetro");
-            return new_prestamo = new Prestamo(monto, cuota, 25);
-
-        } else if (cuota === 12) {
-            monto = parseInt(prompt("Ingrese el monto a calcular en pesos argentinos: "), 10);
-            if(Number.isNaN(monto)) return alert("Este simulador sólo admite números como parámetro");
-            return new_prestamo = new Prestamo(monto, cuota, 35);
-        }
-        
-}
+    if (cuota ===3) {
+      monto = parseInt(prompt("Ingrese el monto a calcular en pesos argentinos: "), 10);
+      if(Number.isNaN(monto)) return alert("Este simulador sólo admite números como parámetro");
+      return new_prestamo = new Prestamo(monto, cuota, 15);
+  
+    } else if (cuota === 6) {
+      monto = parseInt(prompt("Ingrese el monto a calcular en pesos argentinos: "), 10);
+      if(Number.isNaN(monto)) return alert("Este simulador sólo admite números como parámetro");
+      return new_prestamo = new Prestamo(monto, cuota, 25);
+  
+    } else if (cuota === 12) {
+      monto = parseInt(prompt("Ingrese el monto a calcular en pesos argentinos: "), 10);
+      if(Number.isNaN(monto)) return alert("Este simulador sólo admite números como parámetro");
+      return new_prestamo = new Prestamo(monto, cuota, 35);
+    }     
+  }
 
 do {//este do while es solo para implementar lo ya visto, porq no hace nada realmente
 
