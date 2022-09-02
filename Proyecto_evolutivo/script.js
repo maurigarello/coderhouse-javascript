@@ -1,9 +1,16 @@
-let salir = false,
-    db_prestamo = [],
-    db_user = [],
-    new_prestamo = {};
+let db_prestamo = [],
+    new_prestamo = {},
+    filtered_db = [],
+    salir = false,
+    evento_tres = document.getElementById("btn_tres_cuotas").addEventListener("click", tres_cuotas),
+    evento_seis = document.getElementById("btn_seis_cuotas").addEventListener("click", seis_cuotas),
+    evento_doce = document.getElementById("btn_doce_cuotas").addEventListener("click", doce_cuotas),
+    filtro_tres = document.getElementById("btn_tres").addEventListener("click", filtrar_tres),
+    filtro_seis = document.getElementById("btn_seis").addEventListener("click", filtrar_seis),
+    filtro_doce = document.getElementById("btn_doce").addEventListener("click", filtrar_doce);
 
-// declaro clase prestamo
+
+//declaro clase prestamo
 class Prestamo {
     constructor(monto, cuotas, interes) {
         this.monto = monto;
@@ -11,74 +18,132 @@ class Prestamo {
         this.interes = monto * interes / 100;
         this.total = monto + this.interes;
     }
+//fin del constructor
 
-
-// metodo para obtener datos sobre el prestamo
+//metodo para obtener datos
 get_datos() {
     alert(`Info sobre el préstamo solicitado:
             Monto: $` +this.monto + `
             Cuotas: ` +this.cuotas + `
             Total a pagar con interés: ` +this.total);
-        }
+	}
+
+// fin del metodo
+
+// metodo para setear id
+
+set_id() {
+  for(let i = 0; i < db_prestamo.length; i++){
+    const user = db_prestamo[i];
+    user.id = i
+  }
 }
 
-//declaro clase usuario 
-// class Usuario {
-//     constructor(user, pass) {
-//         this.user = user;
-//         this.pass = pass;
-//     }
-// }
+//fin del metodo
+
+}
+//fin de la clase
+
+// //declaro mi clase user
+// class user {
+//   constructor(user, pass) {
+//     this.user = user;
+//     this.pass = pass;
+//     this.id = 0;
+//   }
+// //fin del constructor
+//}
+//fin de la clase
 
 
-function prestamo(cuota) {
-    if (cuota ===3) {
-      monto = parseInt(prompt("Ingrese el monto a calcular en pesos argentinos: "), 10);
-      if(Number.isNaN(monto)) return alert("Este simulador sólo admite números como parámetro");
-      return new_prestamo = new Prestamo(monto, cuota, 15);
-  
-    } else if (cuota === 6) {
-      monto = parseInt(prompt("Ingrese el monto a calcular en pesos argentinos: "), 10);
-      if(Number.isNaN(monto)) return alert("Este simulador sólo admite números como parámetro");
-      return new_prestamo = new Prestamo(monto, cuota, 25);
-  
-    } else if (cuota === 12) {
-      monto = parseInt(prompt("Ingrese el monto a calcular en pesos argentinos: "), 10);
-      if(Number.isNaN(monto)) return alert("Este simulador sólo admite números como parámetro");
-      return new_prestamo = new Prestamo(monto, cuota, 35);
-    }     
+// funcion para insertar en tabla *experimental*, tambien agrega eventos en los botones eliminar
+
+function agregar_a_tabla() {
+  for(p of filtered_db) {
+    let new_tr = document.createElement("tr");
+    new_tr.className = "lista";
+    new_tr.innerHTML = (`<td>$${p.monto}</td><td>${p.cuotas}</td><td>$${p.total}</td><button class="delete">Eliminar</button>`);
+    let tbody = document.getElementById("tbody");
+    tbody.appendChild(new_tr);
+  }
+    botones_borrar = document.querySelectorAll(".delete");
+    for(boton of botones_borrar) {
+      boton.addEventListener("click", function(e) {
+        let boton = e.target,
+            tr = boton.parentNode;
+            tr.remove();
+      })
+    }
+}
+
+//funcion para limpiar tabla cada vez que filtra
+
+let limpiar_tabla = () => {
+    let tbody = document.querySelectorAll(".lista");
+    tbody.forEach(e => {
+        e.parentNode.removeChild(e);
+    });
   }
 
-do {//este do while es solo para implementar lo ya visto, porq no hace nada realmente
+// funcion para recorrer array y filtrarlo
 
-    function tres_cuotas(prestamo) {
-        prestamo(3);
-        db_prestamo.push(new_prestamo);// lo pusheo dentro de mi db_prestamo
-        new_prestamo.get_datos(); //obtengo los datos con el getter
-        //console.log(db_prestamo);
-        }
+function filtrar_tres() {
+  filtered_db = [];
+  let presta_filter = db_prestamo.filter(e => e.cuotas === 3);
+    presta_filter.forEach((e) => {
+    filtered_db.push(e);
+  });
+  limpiar_tabla();
+  agregar_a_tabla();
+  }
 
-    function seis_cuotas(prestamo) {
-        prestamo(6);
-        db_prestamo.push(new_prestamo);// lo pusheo dentro de mi db_prestamo
-        new_prestamo.get_datos(); //obtengo los datos con el getter
-        //console.log(db_prestamo);
-        }
+function filtrar_seis() {
+  filtered_db = [];
+  let presta_filter = db_prestamo.filter(e => e.cuotas === 6);
+    presta_filter.forEach((e) => {
+    filtered_db.push(e);
+  });
+  limpiar_tabla();
+  agregar_a_tabla();
+  }
 
-    function doce_cuotas(prestamo) {
-        prestamo(12);
-        db_prestamo.push(new_prestamo);// lo pusheo dentro de mi db_prestamo
-        new_prestamo.get_datos(); //obtengo los datos con el getter
-        //console.log(db_prestamo);
-        }
+function filtrar_doce() {
+  filtered_db = [];
+  let presta_filter = db_prestamo.filter(e => e.cuotas === 12);
+    presta_filter.forEach((e) => {
+    filtered_db.push(e);
+  });
+  limpiar_tabla();
+  agregar_a_tabla();
+  }
 
-    } while (salir === true)
+// funciones de botones
+
+function tres_cuotas() {
+  monto = parseInt(document.getElementById("monto").value);
+  if(Number.isNaN(monto)) return alert("Este simulador sólo admite números como parámetro");
+  new_prestamo = new Prestamo(monto, 3, 15);
+  db_prestamo.push(new_prestamo);
+  new_prestamo.get_datos();
+  new_prestamo.set_id();  
+}
+
+function seis_cuotas() {
+  monto = parseInt(document.getElementById("monto").value);
+  if(Number.isNaN(monto)) return alert("Este simulador sólo admite números como parámetro");
+  new_prestamo = new Prestamo(monto, 6, 25);
+  db_prestamo.push(new_prestamo);
+  new_prestamo.get_datos();
+  new_prestamo.set_id();  
+}
+
+function doce_cuotas() {
+  monto = parseInt(document.getElementById("monto").value);
+  if(Number.isNaN(monto)) return alert("Este simulador sólo admite números como parámetro");
+  new_prestamo = new Prestamo(monto, 12, 35);
+  db_prestamo.push(new_prestamo);
+  new_prestamo.get_datos();
+  new_prestamo.set_id();  
+}
 
 
-
-
-
-
-
-
-    
