@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+	<!-- Estilos de la web -->
+	<link href="./css/estilos.css" rel="stylesheet">
+
+</head>
+
+<title>PizzAPP</title>
+
+<body class="bg-[url('/img/bg.jpg')]" style="font-family:'Lato',sans-serif;">
+
+	<header>
+		<!-- Navbar -->
+		<nav class=" bg-white w-full flex relative justify-between items-center mx-auto px-8 h-18">
+			<div class="inline-flex">
+				<a class="inline-block py-2 px-3 bg-gray-200 rounded-full" href="#">
+					<div class="flex items-center relative cursor-pointer whitespace-nowrap"><button id="mostrador">Mostrador</button></div>
+				</a>
+				<a class="inline-block py-2 px-3 hover:bg-gray-200 rounded-full" href="#">
+					<div  class="flex items-center relative cursor-pointer whitespace-nowrap"><button id="cocina">Cocina</button></div>
+				</a>
+			</div>
+
+			<div class="flex-initial">
+				<div class="flex justify-end items-center relative">
+
+					<div class="flex mr-4 items-center">
+						<a class="inline-block py-2 px-3 hover:bg-gray-200 rounded-full" href="#">
+							<button id="modal_usuario"><div id="actualUser" class="flex items-center relative cursor-pointer whitespace-nowrap"></div></button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- Navbar -->
+	</header>
+
+	<ul id="lista_cocina" class="pt-16 grid grid-rows-2 grid-cols-1 gap-4 sm:grid-cols-5 hidden">
+		
+	</ul>
+
+	<div id="lista_mostrador" class="flex flex-col items-center justify-center pt-20">
+		<div class="max-w-xl w-full h-full mx-auto z-7 rounded-3xl">
+			<div class="flex flex-col md:flex-row gap-5">
+				<div class="div_general flex md:flex-col flex-row justify-between">
+
+				</div>
+				<div
+					class="bg-white pb-5 relative w-full drop-shadow-2xl border-2 border-solid border-zinc-900 rounded-t-lg rounded-b-lg p-4">
+					<div class="flex-none sm:flex">
+						<div class=" relative h-32 w-32 sm:mb-0 mb-3 hidden">
+						</div>
+						<div class="flex-auto justify-evenly">
+							<div class="flex items-center justify-between">
+								<div class="flex items-center  my-1">
+									<span class="mr-3 rounded-full bg-white w-8 h-8">
+										<img src="./img/bacon.jpg" class="h-8 rounded-full">
+									</span>
+									<h2 class="font-medium font-semibold text-black">PizzAPP</h2>
+								</div>
+								<div class="ml-auto text-black">Comanda Nº:</div>
+								<div id="comanda" class="font-semibold"></div>
+							</div>
+							<div class="border-b border-solid border-b-2 my-5 pt-5"></div>
+							<div class="flex flex-col">
+								<div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+									<div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+										<div class="overflow-hidden">
+											<table class="min-w-full">
+												<thead class="bg-white border-b">
+													<tr>
+														<th scope="col"
+															class="text-sm font-medium-semibold text-gray-900 px-6 py-4 text-left">
+															#
+														</th>
+														<th scope="col"
+															class="text-sm font-medium-semibold text-gray-900 px-6 py-4 text-left">
+															Pizza
+														</th>
+														<th scope="col"
+															class="text-sm font-medium-semibold text-gray-900 px-6 py-4 text-left">
+															Cantidad
+														</th>
+														<th scope="col"
+															class="text-sm font-medium-semibold text-gray-900 px-6 py-4 text-left">
+															Valor
+														</th>
+													</tr>
+												</thead>
+												<tbody id="tbody">
+												</tbody>
+											</table>
+											<div class="border-b border-dashed border-b-2 my-5 pt-5">
+											</div>
+											<div class="flex flex-row mx-auto">
+												<button id="new_pedido" type="button" class="mx-auto justify-center px-6 py-2.5 bg-gray-200 text-gray-700 font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg transition duration-150 ease-in-out w-1/2">Enviar Pedido</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="w-full mt-64 h-8 flex items-end justify-between bg-white">
+		<div>
+		</svg></a><a href="https://github.com/maukovenich" class="hover:opacity-75"><span class="sr-only"> GitHub </span><svg aria-hidden="true" class="ml-5 w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+						<path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path>
+					</svg></a>
+		</div>
+		<p class="mt-4 text-sm text-gray-500 lg:mt-0">Developed by Mauricio Garello.</p>
+	</div>
+
+	<script src="/librerias/tailwind.js"></script>
+	<script src="/librerias/sweetalert.js"></script>
+	<script src="/script/main.js"></script>
+
+</body>
+
+</html>
