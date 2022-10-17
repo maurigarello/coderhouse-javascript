@@ -18,6 +18,6 @@ El mismo consta de:
 
 En el mismo, me enfrente con el gran reto de lograr persistencia y renderizar información sin contar con una base de datos real.
 
-[VER CÓDIGO](https://github.com/maukovenich/Coderhouse/blob/main/desafio_01)
+[VER CÓDIGO](https://github.com/maukovenich/Coderhouse/tree/main/PizzAPP)
 
 
