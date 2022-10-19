@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PizzAPP</title>
+
+</head>
+
+<body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0 bg-[url('/img/bg.jpg')]" style="font-family:'Lato',sans-serif;">
+
+    <!-- FORMA DE REGISTRO -->
+
+    <main id="formularioRegistro" style="display: none" class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+        <section>
+            <h3 class="font-bold text-2xl">Registrarse</h3>
+        </section>
+
+        <!-- REGISTRO -->
+
+        <section class="mt-10">
+            <form id="formulario_registro" name="registration" class="flex flex-col" method="POST" onsubmit="validarFormulario();">
+                <div class="mb-6 pt-3 rounded bg-gray-200"> 
+
+                    <!-- EMAIL INPUT -->
+
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="email">Ingrese su Email</label>
+                    <input autocomplete="off" type="email" id="uEmail" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-stone-800 transition duration-500 px-3 pb-3" oninput="verificarEmail(this)">
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+
+                    <!-- PASSWORD INPUT -->
+
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Ingrese su Password</label>
+                    <input autocomplete="off" type="password" id="uPassword" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-stone-800 transition duration-500 px-3 pb-3" pattern=".{0}|.{6,}" required>
+
+                    <!-- CONFIRM INPUT -->
+                    
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Confirme su Password (Mínimo 6 caracteres)</label>
+                    <input autocomplete="off" type="password" id="confirmPassword" oninput="verificarPassword(this)" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-stone-800 transition duration-500 px-3 pb-3">
+                </div>
+                <button id="submit" class="bg-stone-800 hover:bg-stone-900 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Registrar</button>
+            </form>
+            <div class="max-w-lg mx-auto text-center mt-12 mb-6">
+                <p class="text-stone-800">Ya tenés cuenta? <a href="#" class="font-bold hover:text-stone-600 underline" onclick="mostrarOcultar('logIn', 'formularioRegistro')">Ingresar</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- GRACIAS POR REGISTRARSE -->
+
+    <main id="usuarioRegistrado" style="display: none" class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+        <section>
+            <h3 class="font-bold text-2xl">Te has registrado.</h3>
+        </section>
+        <section class="mt-10">
+                <button onclick="mostrarOcultar('logIn', 'usuarioRegistrado')" class="bg-stone-800 hover:bg-stone-900 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Ingresar</button>
+        </section>
+    </main>
+   
+    <!-- FORMA DE LOGIN (SI YA ESTA REGISTRADO/A) -->
+
+    <main id="logIn" class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+        <section>
+            <h3 class="font-bold text-2xl">Bienvenido a PizzAPP</h3>
+            <p class="text-gray-600 pt-2">Ingresa en tu cuenta.</p>
+        </section>
+
+        <!-- LOGIN -->
+
+        <section class="mt-10">
+            <form id="fregistro" name="login" class="flex flex-col" method="POST" onsubmit="loginUser();">
+                <div class="mb-6 pt-3 rounded bg-gray-200"> 
+
+                    <!-- EMAIL INPUT -->
+
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="email">Email</label>
+                    <input autocomplete="off" type="email" id="uemailId" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-stone-800 transition duration-500 px-3 pb-3">
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+
+                    <!-- PASSWORD INPUT -->
+
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Password</label>
+                    <input autocomplete="off" type="password" id="ePassword" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-stone-800 transition duration-500 px-3 pb-3">
+                </div>
+                <button id="login" class="bg-stone-800 hover:bg-stone-900 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Ingresar</button>
+            </form>
+            <div class="max-w-lg mx-auto text-center mt-12 mb-6">
+                <p class="text-stone-800">No tenés una cuenta? <a class="font-bold hover:text-stone-600 underline" onclick="mostrarOcultar('formularioRegistro', 'logIn', 'formulario_registro')">Registrarse</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="/librerias/tailwind.js"></script>
+	<script src="/librerias/sweetalert.js"></script>
+	<script src="/script/login.js"></script>
+</body>
+</html>

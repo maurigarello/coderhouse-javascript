@@ -1,13 +1,23 @@
 # Coderhouse JAVASCRIPT
 
-# N° 01 - Se requiere crear un ejercicio e implementar bucles y condicionales.
+# PizzAPP  - Gestión de Pedidos y Cocina.
 
-Pedir al usuario ingresar su voto y devolver la cantidad y el nombre de la serie ganadora.
+Hola! Mi nombre es Mauricio Garello y este es mi proyecto final para el curso de Javascript avanzado en CODERHOUSE.
 
-[VER CÓDIGO](https://github.com/maukovenich/Coderhouse/blob/main/desafio_01)
+En este repositorio, comparto todos los elementos que componen a mi proyecto, el cual fue una simulación de un negocio pizzería con una pestaña para el mostrador y otra para la cocina.
 
-# N° 02 - Se pide una simulación utilizando funciones y todo lo visto anteriormente.
+El mismo consta de:
 
-En este caso hice una simulación para pedir préstamos, adicionalmente le agregué algunos estilos en CSS e hice los botones funcionales.
+> * Paleta de colores restaurante
+> * Maquetado de la aplicación utilizando HTML5, CSS3 y Tailwind CSS.
+> * Aumentar Base de Datos con mayor cantidad de pizzas
+> * Login de acceso y registro (Base de datos simulada con LocalStorage)
+> * mostrar ID de usuario vigente
+> * Control de acceso a sistema, reenviando al login a usuarios no registrados
+> * Renderización de comandas en base a LocalStorage
 
-[VER CÓDIGO](https://github.com/maukovenich/Coderhouse/blob/main/desafio_02)
+En el mismo, me enfrente con el gran reto de lograr persistencia y renderizar información sin contar con una base de datos real.
+
+[VER CÓDIGO](https://github.com/maukovenich/Coderhouse/tree/main/PizzAPP)
+
+
