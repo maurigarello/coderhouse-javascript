@@ -53,6 +53,28 @@ let modal = document.getElementById("modal_usuario").addEventListener("click", m
 
 //** FUNCIONES */
 
+//** funcion para comprobar la cantidad de comandas true en cocina */
+
+function checkComandaFlag() {
+  const pedidos_true = pedidos.filter(e => e.flag === true);
+  if (pedidos_true.length >= 12) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Dale tiempo a los cocineros, estan con mucha demanda!',
+      showConfirmButton: false,
+      timer: 1500
+      });
+      return true;
+  }
+}
+
+//** funcion para renderizar comandas luego de enviar pedido */
+
+function renderAfterPedido() {
+  lista_cocina.innerHTML = "";
+  renderComandasCocina();
+}
+
 //** modal */
 
 function modalUsuario() {
@@ -102,7 +124,7 @@ function templateRow(valor, cantidad) {
 
 function comandasCocina(nro_comanda) {
   let new_li = document.createElement("li")
-  new_li.innerHTML = `<a class="flex flex-col justify-between h-full p-8 transition bg-white border-4 border-black group rounded-xl hover:bg-red-200 hover:shadow-offset hover:shadow-black">
+  new_li.innerHTML = `<button><a class="flex flex-col justify-between h-full p-8 transition bg-white border-4 border-black group rounded-xl hover:bg-red-200 hover:shadow-offset hover:shadow-black">
     <div class="flex">
       <span class="text-xs font-medium text-white bg-black px-3 py-1.5">ITEMS</span>
       <span class="ml-auto text-xs font-medium text-white bg-black px-1 py-1.5">Comanda Nro:${nro_comanda}</span>
@@ -112,7 +134,7 @@ function comandasCocina(nro_comanda) {
         <thead class="bg-white border-b">
         </thead>
       </table></div>
-  </a>`;
+  </a></button>`;
 return new_li;
 }
 
@@ -123,7 +145,6 @@ function mostrarOcultar(){
     mostrarYOcultar("lista_mostrador","lista_cocina");
   } else if (this.id === "cocina") {
     mostrarYOcultar("lista_cocina", "lista_mostrador");
-    
   }
 }
 
@@ -155,10 +176,13 @@ function enviarPedido() {
       showConfirmButton: false,
       timer: 1500
       });
+  } else if (checkComandaFlag() === true) {
+    checkComandaFlag();
   } else {
     pedidos.push(pedido(items, monto(), comanda.innerText, true));
     localStorage.setItem("pedidos", JSON.stringify(pedidos));
     limpiarComanda();
+    renderAfterPedido();
     Swal.fire({
       icon: 'success',
       title: 'Pedido enviado a Cocina!',
@@ -172,6 +196,7 @@ function enviarPedido() {
 
 function limpiarComanda(){
   tbody.innerHTML = '';
+  items = [];
   comanda.innerText = parseFloat(comanda.innerText) + 1;
 
   //** resetear contadores de pizzas para evitar bugs */
