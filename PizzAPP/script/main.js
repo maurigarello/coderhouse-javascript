@@ -124,17 +124,17 @@ function templateRow(valor, cantidad) {
 
 function comandasCocina(nro_comanda) {
   let new_li = document.createElement("li")
-  new_li.innerHTML = `<button><a class="flex flex-col justify-between h-full p-8 transition bg-white border-4 border-black group rounded-xl hover:bg-red-200 hover:shadow-offset hover:shadow-black">
+  new_li.innerHTML = `<a class="flex flex-col justify-between h-full p-8 transition bg-white border-4 border-black group rounded-xl hover:bg-red-200 hover:shadow-offset hover:shadow-black">
     <div class="flex">
-      <span class="text-xs font-medium text-white bg-black px-3 py-1.5">ITEMS</span>
-      <span class="ml-auto text-xs font-medium text-white bg-black px-1 py-1.5">Comanda Nro:${nro_comanda}</span>
+      <button id="btn_alta_${nro_comanda}" class="text-xs font-medium text-white bg-lime-600 border-4 border-black hover:bg-lime-800 px-3 py-1.5">Alta</button>
+      <span class="ml-auto text-xs font-medium text-white bg-black px-1 py-1.5">Com. NRO:${nro_comanda}</span>
     </div>
     <div class="mt-8">
       <table id="${nro_comanda}" class="min-w-full">
         <thead class="bg-white border-b">
         </thead>
       </table></div>
-  </a></button>`;
+  </a>`;
 return new_li;
 }
 
