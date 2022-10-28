@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderComanda();
   pushStoragePedidos();
   renderComandasCocina();
+  actualizaEvento();
 });
 
 
@@ -18,7 +19,6 @@ let pepperoni_contador = 1;
 let mar_contador = 1;
 
 let items_pedido = [];
-let pedidos_de_alta = [];
 let items = [];
 let pedidos = [];
 let pedidos_string;
@@ -50,8 +50,40 @@ let boton_mostrador = document.getElementById("mostrador").addEventListener("cli
 let btn_mostrador = document.getElementById("mostrador");
 let lista_cocina = document.getElementById("lista_cocina");
 let modal = document.getElementById("modal_usuario").addEventListener("click", modalUsuario);
+let comandas_nro = document.getElementsByClassName("btnes_alta");
+
 
 //** FUNCIONES */
+
+//** funcion para actualizar estado de listeners */
+
+function actualizaEvento() {
+  for (let btn of comandas_nro) {
+    btn.addEventListener("click", traeNumeroComanda);
+  }
+}
+
+
+//** funcion para traer numero de comanda para luego archivar */
+
+function traeNumeroComanda() {
+  let new_comanda = this.parentNode.innerHTML;
+  new_comanda = new_comanda.toString();
+  let comanda_index;
+  if (new_comanda.at(-14) === ':') {
+    comanda_index = new_comanda.at(-13);
+  } else {
+    comanda_index = new_comanda.at(-14) + new_comanda.at(-13); 
+  }
+  for (let pedido of pedidos) {
+    if (pedido.nro_comanda === comanda_index) {
+      pedido.flag = false;
+      localStorage.removeItem("pedidos");
+      localStorage.setItem("pedidos", JSON.stringify(pedidos));
+      renderAfterPedido();
+    }
+  }
+}
 
 //** funcion para comprobar la cantidad de comandas true en cocina */
 
@@ -104,10 +136,9 @@ function renderComandasCocina() {
       for (let pedido of pedido_items) {
         table_id.append(templateRow(pedido.nombre, pedido.cantidad));
       }
-    } else if (item.flag === false) {
-      pedidos_de_alta.push(item);
     }
   }
+  actualizaEvento();
 }
 
 //** template para row de comanda */
@@ -126,7 +157,7 @@ function comandasCocina(nro_comanda) {
   let new_li = document.createElement("li")
   new_li.innerHTML = `<a class="flex flex-col justify-between h-full p-8 transition bg-white border-4 border-black group rounded-xl hover:bg-red-200 hover:shadow-offset hover:shadow-black">
     <div class="flex">
-      <button id="btn_alta_${nro_comanda}" class="text-xs font-medium text-white bg-lime-600 border-4 border-black hover:bg-lime-800 px-3 py-1.5">Alta</button>
+      <button class="btnes_alta text-xs font-medium text-white bg-lime-600 border-4 border-black hover:bg-lime-800 px-3 py-1.5">Alta</button>
       <span class="ml-auto text-xs font-medium text-white bg-black px-1 py-1.5">Com. NRO:${nro_comanda}</span>
     </div>
     <div class="mt-8">
