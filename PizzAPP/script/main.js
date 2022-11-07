@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderComanda();
   pushStoragePedidos();
   renderComandasCocina();
+  renderComandasArchivo();
   actualizaEvento();
 });
 
@@ -51,9 +52,38 @@ let btn_mostrador = document.getElementById("mostrador");
 let lista_cocina = document.getElementById("lista_cocina");
 let modal = document.getElementById("modal_usuario").addEventListener("click", modalUsuario);
 let comandas_nro = document.getElementsByClassName("btnes_alta");
+let lista_archivados = document.getElementById("archivo").addEventListener("click", mostrarOcultar);
+let btn_archivo = document.getElementById("archivo");
 
 
 //** FUNCIONES */
+
+//** funcion para renderziar luego de alta */
+
+function renderAfterAlta() {
+  let lista_archivo = document.getElementById("lista_archivo");
+  lista_archivo.innerHTML = "";
+  renderComandasArchivo();
+}
+
+//** funcion para renderizar en archivados */
+
+function renderComandasArchivo() {
+  for (let item of pedidos) {
+    if (item.flag === false) {
+      let lista_archivo = document.getElementById("lista_archivo");
+      lista_archivo.append(comandasArchivo(item.nro_comanda));  
+      let table_id = document.getElementById(item.nro_comanda);
+      let pedido_items = [];
+      pedido_items.push(item.items);
+      pedido_items = pedido_items.flat(2);
+      for (let pedido of pedido_items) {
+        table_id.append(templateRow(pedido.nombre, pedido.cantidad));
+      }
+    }
+  }
+  actualizaEvento();
+}
 
 //** funcion para actualizar estado de listeners */
 
@@ -62,7 +92,6 @@ function actualizaEvento() {
     btn.addEventListener("click", traeNumeroComanda);
   }
 }
-
 
 //** funcion para traer numero de comanda para luego archivar */
 
@@ -83,6 +112,7 @@ function traeNumeroComanda() {
       renderAfterPedido();
     }
   }
+  renderAfterAlta();
 }
 
 //** funcion para comprobar la cantidad de comandas true en cocina */
@@ -145,10 +175,27 @@ function renderComandasCocina() {
 
 function templateRow(valor, cantidad) {
   let tr = document.createElement("tr");
-  tr.setAttribute("class", "bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100");
+  tr.setAttribute("class", "hover:bg-gray-100");
   tr.innerHTML = `<td class="text-sm text-gray-900 font-light py-4 whitespace-nowrap">${valor}</td>
   <td class="text-sm text-gray-900 font-light py-4 whitespace-nowrap">${cantidad}</td>`;
   return tr;
+}
+
+//** template para comandas en archivo */
+
+function comandasArchivo(nro_comanda) {
+  let new_li = document.createElement("li")
+  new_li.innerHTML = `<a class="flex flex-col justify-between h-full p-8 transition bg-white border-4 border-black group rounded-xl hover:bg-red-200 hover:shadow-offset hover:shadow-black">
+    <div class="flex">
+      <span class="grow text-center text-xs font-medium text-white bg-black px-1 py-1.5">Com. NRO:${nro_comanda}</span>
+    </div>
+    <div class="mt-8">
+      <table id="${nro_comanda}" class="min-w-full">
+        <thead class="bg-white border-b">
+        </thead>
+      </table></div>
+  </a>`;
+return new_li;
 }
 
 //** template para comandas en cocina */
@@ -173,27 +220,45 @@ return new_li;
 
 function mostrarOcultar(){
   if (this.id === "mostrador") {
-    mostrarYOcultar("lista_mostrador","lista_cocina");
+    mostrarYOcultar("lista_mostrador","lista_cocina", "lista_archivo");
   } else if (this.id === "cocina") {
-    mostrarYOcultar("lista_cocina", "lista_mostrador");
+    mostrarYOcultar("lista_cocina", "lista_mostrador", "lista_archivo");
+  } else if (this.id === "archivo") {
+    mostrarYOcultar("lista_archivo", "lista_mostrador", "lista_cocina");
   }
 }
 
-function mostrarYOcultar(mostrar, ocultar) { 
+function mostrarYOcultar(mostrar, ocultar, ocultar_dos) { 
   if (mostrar === "lista_mostrador") {
+    btn_mostrador.parentNode.parentNode.setAttribute("class", "inline-block py-2 px-3 bg-gray-200 rounded-full");
+    btn_archivo.parentNode.parentNode.setAttribute("class", "inline-block py-2 px-3 hover:bg-gray-200 rounded-full");
+    btn_cocina.parentNode.parentNode.setAttribute("class", "inline-block py-2 px-3 hover:bg-gray-200 rounded-full");
     let mostrar_mostrador = document.getElementById(mostrar);
     mostrar_mostrador.setAttribute("class", "flex flex-col items-center justify-center pt-20");
-    btn_mostrador.parentNode.parentNode.setAttribute("class", "inline-block py-2 px-3 bg-gray-200 rounded-full");
-    btn_cocina.parentNode.parentNode.setAttribute("class", "inline-block py-2 px-3 hover:bg-gray-200 rounded-full");
     let ocultar_cocina = document.getElementById(ocultar);
-    ocultar_cocina.setAttribute("class", "pt-10 grid grid-rows-2 grid-cols-1 gap-4 sm:grid-cols-6 hidden");
+    ocultar_cocina.setAttribute("class", "px-4 pt-10 grid grid-rows-2 grid-cols-1 gap-4 sm:grid-cols-6 hidden");
+    let ocultar_archivo = document.getElementById(ocultar_dos);
+    ocultar_archivo.setAttribute("class", "px-4 pt-16 grid grid-rows-2 grid-cols-1 gap-4 sm:grid-cols-6 hidden");
   } else if (mostrar === "lista_cocina") {
-    let mostrar_cocina = document.getElementById(mostrar);
-    mostrar_cocina.setAttribute("class", "pt-10 grid grid-rows-2 grid-cols-1 gap-4 sm:grid-cols-6");
     btn_cocina.parentNode.parentNode.setAttribute("class", "inline-block py-2 px-3 bg-gray-200 rounded-full");
+    btn_archivo.parentNode.parentNode.setAttribute("class", "inline-block py-2 px-3 hover:bg-gray-200 rounded-full");
     btn_mostrador.parentNode.parentNode.setAttribute("class", "inline-block py-2 px-3 hover:bg-gray-200 rounded-full");
+    let mostrar_cocina = document.getElementById(mostrar);
+    mostrar_cocina.setAttribute("class", "px-4 pt-10 grid grid-rows-2 grid-cols-1 gap-4 sm:grid-cols-6");
     let ocultar_mostrador = document.getElementById(ocultar);
     ocultar_mostrador.setAttribute("class", "flex flex-col items-center justify-center pt-20 hidden");
+    let ocultar_archivo = document.getElementById(ocultar_dos);
+    ocultar_archivo.setAttribute("class", "px-4 pt-16 grid grid-rows-2 grid-cols-1 gap-4 sm:grid-cols-6 hidden");
+  } else if (mostrar === "lista_archivo") {
+    btn_archivo.parentNode.parentNode.setAttribute("class", "inline-block py-2 px-3 bg-gray-200 rounded-full");
+    btn_cocina.parentNode.parentNode.setAttribute("class", "inline-block py-2 px-3 hover:bg-gray-200 rounded-full");
+    btn_mostrador.parentNode.parentNode.setAttribute("class", "inline-block py-2 px-3 hover:bg-gray-200 rounded-full");
+    let mostrar_archivo = document.getElementById(mostrar);
+    mostrar_archivo.setAttribute("class", "px-4 pt-16 grid grid-rows-2 grid-cols-1 gap-4 sm:grid-cols-6");
+    let ocultar_mostrador = document.getElementById(ocultar);
+    ocultar_mostrador.setAttribute("class", "flex flex-col items-center justify-center pt-20 hidden");
+    let ocultar_cocina = document.getElementById(ocultar_dos);
+    ocultar_cocina.setAttribute("class", "px-4 pt-10 grid grid-rows-2 grid-cols-1 gap-4 sm:grid-cols-6 hidden");
   }
 }
 
