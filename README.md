@@ -20,7 +20,7 @@ En el mismo, me enfrente con el gran reto de lograr persistencia y renderizar in
 
 [VER CÓDIGO](https://github.com/maukovenich/Coderhouse/tree/main/PizzAPP)
 
----------------------------------------------------------------------------[ ENGLISH ]---------------------------------------------------------------------------------
+---------------------------------------------------------------------------[ ENGLISH ]----------------------------------------------------------------------
 
 # Coderhouse JAVASCRIPT
 
