@@ -20,4 +20,26 @@ En el mismo, me enfrente con el gran reto de lograr persistencia y renderizar in
 
 [VER CÓDIGO](https://github.com/maukovenich/Coderhouse/tree/main/PizzAPP)
 
+---------------------------------------------------------------------------[ ENGLISH ]---------------------------------------------------------------------------------
 
+# Coderhouse JAVASCRIPT
+
+# PizzAPP - Order Management and Kitchen.
+
+Hello! My name is Mauricio Garello and this is my final project for the advanced Javascript course at CODERHOUSE.
+
+In this repository, I share all the elements that make up my project, which was a simulation of a pizzeria business with a tab for the counter and another for the kitchen.
+
+It consists of:
+
+> * Restaurant color palette
+> * Layout of the application using HTML5, CSS3 and Tailwind CSS.
+> * Increase Database with more pizzas
+> * Access login and registration (Database simulated with LocalStorage)
+> * show current user ID
+> * System access control, forwarding the login to unregistered users
+> * Rendering of commands based on LocalStorage
+
+In it, I faced the great challenge of achieving persistence and rendering information without having a real database.
+
+[VIEW CODE](https://github.com/maukovenich/Coderhouse/tree/main/PizzAPP)
