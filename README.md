@@ -20,6 +20,8 @@ En el mismo, me enfrente con el gran reto de lograr persistencia y renderizar in
 
 [VER CÓDIGO](https://github.com/maukovenich/Coderhouse/tree/main/PizzAPP)
 
+![Image text](https://github.com/maurigarello/Javascript---Coderhouse/blob/main/PizzAPP/img/pizAPP_1.png)
+
 ------------------------------------------------------[ ENGLISH ]---------------------------------------------------------------
 
 # Coderhouse JAVASCRIPT
