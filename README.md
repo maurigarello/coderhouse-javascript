@@ -22,6 +22,12 @@ En el mismo, me enfrente con el gran reto de lograr persistencia y renderizar in
 
 ![Image text](https://github.com/maurigarello/Javascript---Coderhouse/blob/main/PizzAPP/img/pizAPP_1.png)
 
+![Image text](https://github.com/maurigarello/Javascript---Coderhouse/blob/main/PizzAPP/img/pizAPP_2.png)
+
+![Image text](https://github.com/maurigarello/Javascript---Coderhouse/blob/main/PizzAPP/img/pizAPP_3.png)
+
+![Image text](https://github.com/maurigarello/Javascript---Coderhouse/blob/main/PizzAPP/img/pizAPP_4.png)
+
 ------------------------------------------------------[ ENGLISH ]---------------------------------------------------------------
 
 # Coderhouse JAVASCRIPT
