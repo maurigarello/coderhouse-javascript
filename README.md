@@ -19,6 +19,7 @@ El mismo consta de:
 En el mismo, me enfrente con el gran reto de lograr persistencia y renderizar información sin contar con una base de datos real.
 
 [VER CÓDIGO](https://github.com/maukovenich/Coderhouse/tree/main/PizzAPP)
+[LIVE DEMO](https://pizapp.netlify.app)
 
 ![Image text](https://raw.githubusercontent.com/maurigarello/coderhouse-javascript/main/img/pizAPP_1.png)
 
