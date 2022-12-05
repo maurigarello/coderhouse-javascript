@@ -51,4 +51,5 @@ It consists of:
 
 In it, I faced the great challenge of achieving persistence and rendering information without having a real database.
 
-[VIEW CODE](https://github.com/maukovenich/Coderhouse/tree/main/PizzAPP)
+[[VIEW CODE]](https://github.com/maukovenich/Coderhouse/tree/main/PizzAPP)
+[[LIVE DEMO]](https://pizapp.netlify.app)
